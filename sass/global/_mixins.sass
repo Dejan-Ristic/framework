@@ -1,0 +1,51 @@
+= border-radius($radius)
+  -webkit-border-radius: $radius
+  -moz-border-radius: $radius
+  -ms-border-radius: $radius
+  border-radius: $radius
+
+= transition($transition-property, $transition-time, $method)
+  -webkit-transition: $transition-property $transition-time $method
+  -moz-transition: $transition-property $transition-time $method
+  -o-transition: $transition-property $transition-time $method
+  transition: $transition-property $transition-time $method
+
+= box-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $spread: 0, $color: #CCC)
+  -webkit-box-shadow: $horizontal $vertical $blur $spread $color
+  -moz-box-shadow: $horizontal $vertical $blur $spread $color
+  box-shadow: $horizontal $vertical $blur $spread $color
+
+= text-shadow($horizontal: 0px, $vertical: 1px, $blur: 2px, $color: #CCC)
+  -webkit-text-shadow: $horizontal $vertical $blur  $color
+  -moz-text-shadow: $horizontal $vertical $blur  $color
+  text-shadow: $horizontal $vertical $blur  $color
+
+= opacity($opacity)
+  opacity: $opacity
+  $opacity-ie: $opacity * 100
+  filter: alpha(opacity=$opacity-ie) //IE8
+
+= input-autofill($back)
+  -webkit-box-shadow: 0 0 0 50px $back inset
+  -moz-box-shadow: 0 0 0 50px $back inset
+  box-shadow: 0 0 0 50px $back inset
+
+= rotation($degrees)
+  -webkit-transform: rotate(#{$degrees}deg)
+  -moz-transform:    rotate(#{$degrees}deg)
+  -ms-transform:     rotate(#{$degrees}deg)
+  -o-transform:      rotate(#{$degrees}deg)
+  transform:         rotate(#{$degrees}deg)
+
+= linear-gradient ($color-up, $color-down)
+  background: -webkit-linear-gradient(top, $color-up, $color-down)
+  background:    -moz-linear-gradient(top, $color-up, $color-down)
+  background:     -ms-linear-gradient(top, $color-up, $color-down)
+  background:      -o-linear-gradient(top, $color-up, $color-down)
+  background:         linear-gradient(top, $color-up, $color-down)
+
+= mid-aligner
+  content: ""
+  height: 100%
+  display: inline-block
+  vertical-align: middle

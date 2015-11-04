@@ -1,0 +1,54 @@
+// IMPORTED FROM UTILS
+= hovering($base-color)
+  background-color: $base-color
+  &:hover
+    background-color: lighten($base-color, 20%)
+
+
+// BUTTONS
+$button-large-height: 50px
+$button-small-height: 26px
+
+= button-main-style($button-height)
+  display: inline-block
+  height: $button-height
+  min-width: $button-height*5
+  font-size: ($button-height/100)*60
+  line-height: ($button-height/100)*60
+  padding: ($button-height - $button-height*60/100)/2 ($button-height*5/100)
+  color: $color-white
+  text-align: center
+
+%fw-button-large
+  @include button-main-style($button-large-height)
+  &:hover
+    box-shadow: 1.5px, 2.598px, 7px, 0, $solor-grey-shadow
+
+%fw-button-small
+  @include button-main-style($button-small-height)
+
+.button-large-blue
+  @extend %fw-button-large
+  @include hovering($color-blue)
+
+.button-large-red
+  @extend %fw-button-large
+  @include hovering($color-red)
+
+.button-small-blue
+  @extend %fw-button-small
+  @include hovering($color-blue)
+
+.button-small-red
+  @extend %fw-button-small
+  @include hovering($color-red)
+
+.button-large-blue--rounded
+  @extend %fw-button-large
+  @include hovering($color-blue)
+  border-radius: $button-large-height/2
+
+.button-large-red--rounded
+  @extend %fw-button-large
+  @include hovering($color-red)
+  border-radius: $button-large-height/2
