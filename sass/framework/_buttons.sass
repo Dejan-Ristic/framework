@@ -1,54 +1,68 @@
 // IMPORTED FROM UTILS
-= hovering($base-color)
+=hovering($base-color)
   background-color: $base-color
   &:hover
-    background-color: lighten($base-color, 20%)
+    background-color: lighten($base-color, 7%)
 
 
 // BUTTONS
-$button-large-height: 50px
-$button-small-height: 26px
+$button-large-height: 48px
+$button-small-height: 28px
 
-= button-main-style($button-height)
+$button-settings:(padding: 0)
+
+
+=button-main-style($button-height)
   display: inline-block
+
+  vertical-align: bottom
+  box-sizing: border-box
   height: $button-height
   min-width: $button-height*5
-  font-size: ($button-height/100)*60
-  line-height: ($button-height/100)*60
-  padding: ($button-height - $button-height*60/100)/2 ($button-height*5/100)
+  font-size: round(($button-height/100)*60)
+  //line-height: round(($button-height/100)*60)
+  padding: round(($button-height - $button-height*60/100)/2) round($button-height/2)
   color: $color-white
   text-align: center
 
+  margin: 10px 0
+
 %fw-button-large
-  @include button-main-style($button-large-height)
+  +button-main-style($button-large-height)
   &:hover
-    box-shadow: 1.5px, 2.598px, 7px, 0, $solor-grey-shadow
+    box-shadow: 2px 3px 7px 0 $color-grey
 
 %fw-button-small
-  @include button-main-style($button-small-height)
+  +button-main-style($button-small-height)
+
+
 
 .button-large-blue
   @extend %fw-button-large
-  @include hovering($color-blue)
+  +hovering($color-blue)
 
 .button-large-red
   @extend %fw-button-large
-  @include hovering($color-red)
+  +hovering($color-red)
+
+
 
 .button-small-blue
   @extend %fw-button-small
-  @include hovering($color-blue)
+  +hovering($color-blue)
 
 .button-small-red
   @extend %fw-button-small
-  @include hovering($color-red)
+  +hovering($color-red)
+
+
 
 .button-large-blue--rounded
   @extend %fw-button-large
-  @include hovering($color-blue)
+  +hovering($color-blue)
   border-radius: $button-large-height/2
 
 .button-large-red--rounded
   @extend %fw-button-large
-  @include hovering($color-red)
+  +hovering($color-red)
   border-radius: $button-large-height/2

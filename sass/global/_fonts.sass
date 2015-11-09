@@ -1,0 +1,43 @@
+//MIXIN FOR IMPORT OF FONTS
+  *********************************************************************************************************************
+  Every font package (directory) must be named the same as every file in that package, and placed inside
+  directory contained in $fonts-base-dir variable in _settings.sass partial.
+  The mixin takes three parameters: $font-name (must be the same name as the font package) which is mandatory, and
+  $font-weight and $font-style which are optional (both default to normal)
+
+=import-font($font-name, $font-weight: normal, $font-style: normal)
+  $font-types-list: ()
+  $font-types-list: append($font-types-list, "eot" "embedded-opentype", comma)
+  $font-types-list: append($font-types-list, "ttf" "truetype", comma)
+  $font-types-list: append($font-types-list, "otf" "opentype", comma)
+  $font-types-list: append($font-types-list, "woff" "woff", comma)
+  $font-types-list: append($font-types-list, "woff2" "woff2", comma)
+  $font-types-list: append($font-types-list, "svg" "svg", comma)
+  $url: ""
+  $format: ""
+  $used-font-files: ""
+
+  @font-face
+    font-family: "#{$font-name}"
+    @each $font-type in $font-types-list
+      $font-path: $fonts-base-dir+"/"+$font-name+"/"+$font-name+"."+nth($font-type, 1)
+      @if (file_exists(str_slice($font-path, 2)))
+        @if nth($font-type, 1) == "eot"
+          src: url($font-path)
+          $url: 'url("'+$font-path+'?#iefix'+'")'
+        @else if nth($font-type, 1) == "svg"
+          $url: 'url("'+$font-path+'#'+$font-name+'")'
+        @else
+          $url: 'url("'+$font-path+'")'
+        $format: ' format("'+'#{nth($font-type, 2)}'+'"), '
+        $used-font-files: str_insert($used-font-files, $url+$format, str_length($used-font-files)+1)
+
+    $used-font-files: str_slice($used-font-files, 1, str_length($used-font-files)-2)
+    src: #{$used-font-files}
+
+    font-weight: $font-weight
+    font-style: $font-style
+//*********************************************************************************************************************
+
++import-font(raleway-normal)
++import-font(icomoon)
