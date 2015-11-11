@@ -24,13 +24,16 @@ sourcemap = (environment == :production) ? false : true
 
 
 
-
 # Additional Methods
+# *********************************************************************************************************************
 
+
+# Method "file_exits" is used to check if a file exists inside the project directory. Returns true/false.
+# *********************************************************************************************************************
 module Sass::Script::Functions
-    # Does the supplied image exist?
-    def file_exists(image_file)
-      path = image_file.value
+    def file_exists(file)
+      path = file.value
       Sass::Script::Bool.new(File.exists?(path))
     end
 end
+# *********************************************************************************************************************
